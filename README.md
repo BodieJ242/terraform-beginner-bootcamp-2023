@@ -221,3 +221,29 @@ teraform destroy This will destroy resources.
 
 You can also use the auto approve flag to skip the approve prompt eg. terraform apply --auto-approve
 
+## Issues with Terraform Cloud Login and Gitpod Workspace
+
+When attempting to run `terraform login` it will launch bash
+
+```
+https://app.terraform.io/app/settings/tokens?source=terraform-login
+```
+
+Then create open the file manually here:
+
+```sh
+touch /home/gitpod/.terraform.d/credentials.tfrc.json
+open /home/gitpod/.terraform.d/credentials.tfrc.json
+```
+
+Provide the following code (replace your token in the file):
+
+```json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "YOUR-TERRAFORM-CLOUD-TOKEN"
+    }
+  }
+}
+``````
